@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Kanban Best Practices - Complete Guide to Kanban Methodology',
+  title: 'Kanban Best Practices - Complete Methodology Guide 2026',
   description: 'Master Kanban with our comprehensive guide. Learn the 4 core principles, 6 essential practices, and best practices to optimize your workflow and boost team productivity.',
   keywords: 'kanban best practices, kanban methodology, agile workflow, kanban principles, WIP limits, workflow visualization, lean management',
   openGraph: {
@@ -253,6 +253,25 @@ export default function KanbanPage() {
                 </Link>
               </div>
             </div>
+          </section>
+
+          {/* Related Content */}
+          <section className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-lg p-8 border-2 border-indigo-200 dark:border-indigo-800">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              📚 Want to Learn More?
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              Master productivity beyond Kanban with our comprehensive guide covering daily habits, time management techniques, and focus strategies.
+            </p>
+            <Link
+              href="/productivity-tips"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Explore Productivity Tips
+            </Link>
           </section>
 
           {/* Quick Tips */}

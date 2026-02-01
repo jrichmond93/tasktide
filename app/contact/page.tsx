@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Task Breezer Support',
+  title: 'Contact Task Breezer - Get Support & Send Feedback',
   description: 'Get in touch with Task Breezer. Contact us for questions, feedback, suggestions, or support. We\'re here to help with your task management needs.',
+  keywords: 'contact us, support, help, feedback, customer service, get in touch, email support',
   openGraph: {
-    title: 'Contact Task Breezer',
+    title: 'Contact Task Breezer - Support & Feedback',
     description: 'Get in touch with our team for support and feedback',
     type: 'website',
   },

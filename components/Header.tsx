@@ -43,6 +43,7 @@ export default function Header() {
         { name: 'My Boards', href: '/boards' },
         { name: 'Archive', href: '/archive' },
         { name: 'Kanban Guide', href: '/kanban' },
+        { name: 'Productivity', href: '/productivity-tips' },
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
       ]
@@ -50,6 +51,7 @@ export default function Header() {
         { name: 'Board', href: '/' },
         { name: 'Archive', href: '/archive' },
         { name: 'Kanban Guide', href: '/kanban' },
+        { name: 'Productivity', href: '/productivity-tips' },
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
       ];

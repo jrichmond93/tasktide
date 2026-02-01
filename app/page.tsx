@@ -413,6 +413,110 @@ export default function Home() {
         )}
       </div>
 
+      {/* Testimonials Section */}
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 py-16 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              What Our Users Say
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              Join thousands of productive people using Task Breezer
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 italic">
+                &quot;Task Breezer has completely transformed how I manage my projects. The drag-and-drop interface is so intuitive, and I love that it syncs across all my devices!&quot;
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  SM
+                </div>
+                <div className="ml-4">
+                  <p className="font-semibold text-gray-900 dark:text-white">Sarah Mitchell</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Product Manager</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 italic">
+                &quot;Finally, a Kanban board that&apos;s simple yet powerful. No bloat, just the features I need. Plus it&apos;s free! Best productivity tool I&apos;ve found this year.&quot;
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  JC
+                </div>
+                <div className="ml-4">
+                  <p className="font-semibold text-gray-900 dark:text-white">James Chen</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Software Developer</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 italic">
+                &quot;As a freelancer juggling multiple clients, Task Breezer keeps me organized and on track. The priority system and due dates are lifesavers. Highly recommend!&quot;
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  ER
+                </div>
+                <div className="ml-4">
+                  <p className="font-semibold text-gray-900 dark:text-white">Emily Rodriguez</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Freelance Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              Ready to boost your productivity?
+            </p>
+            <button
+              onClick={() => !isAuthenticated && router.push('/signup')}
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+            >
+              {isAuthenticated ? 'Start Organizing' : 'Get Started Free'}
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Add Task Modal */}
       {isAddTaskOpen && (
         <AddTaskForm onSubmit={handleAddTask} onClose={() => setIsAddTaskOpen(false)} />

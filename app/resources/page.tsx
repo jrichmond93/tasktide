@@ -40,6 +40,34 @@ export default function ResourcesPage() {
               <span>📚</span>
               Productivity Methods & Frameworks
             </h2>
+            
+            {/* Internal Links Banner */}
+            <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border-l-4 border-blue-500">
+              <p className="text-sm font-medium text-gray-900 dark:text-white mb-3">
+                🌟 Explore Our In-Depth Guides:
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/kanban"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-blue-500 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors font-medium text-sm"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                  Kanban Best Practices
+                </Link>
+                <Link
+                  href="/productivity-tips"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-indigo-500 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-gray-700 transition-colors font-medium text-sm"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Productivity Tips & Techniques
+                </Link>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <a
                 href="https://gettingthingsdone.com/"
@@ -63,17 +91,18 @@ export default function ResourcesPage() {
                   Time management method using timed intervals for focused work sessions
                 </p>
               </a>
-              <a
-                href="https://www.atlassian.com/agile/kanban"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+              <Link
+                href="/kanban"
+                className="p-4 border-2 border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:border-blue-600 dark:hover:border-blue-300 transition-colors"
               >
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Kanban Guide by Atlassian</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Comprehensive guide to Kanban methodology and best practices
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Kanban Best Practices</h3>
+                  <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Our Guide</span>
+                </div>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  Complete guide to Kanban methodology, principles, and practices for Task Breezer
                 </p>
-              </a>
+              </Link>
               <a
                 href="https://www.eisenhower.me/eisenhower-matrix/"
                 target="_blank"

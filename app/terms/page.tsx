@@ -1,4 +1,16 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service - Task Breezer Legal Terms & Conditions',
+  description: 'Read Task Breezer\'s Terms of Service. Learn about user agreements, account policies, acceptable use, intellectual property rights, and our commitment to your privacy.',
+  keywords: 'terms of service, user agreement, legal terms, terms and conditions, task breezer policies',
+  openGraph: {
+    title: 'Task Breezer Terms of Service',
+    description: 'Legal terms and conditions for using Task Breezer',
+    type: 'website',
+  },
+};
 
 export default function TermsPage() {
   return (

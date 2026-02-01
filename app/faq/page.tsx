@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import FAQClient from './FAQClient';
 
 export const metadata: Metadata = {
-  title: 'FAQ - Task Breezer Help & Support',
+  title: 'FAQ - Frequently Asked Questions | Task Breezer Help',
   description: 'Find answers to frequently asked questions about Task Breezer. Learn how to create boards, manage tasks, use drag-and-drop, sync data, and more.',
+  keywords: 'task breezer faq, help, support, how to, questions, kanban help, task management help',
   openGraph: {
-    title: 'Task Breezer FAQ',
+    title: 'Task Breezer FAQ - Get Help & Support',
     description: 'Get help with Task Breezer - answers to common questions',
     type: 'website',
   },

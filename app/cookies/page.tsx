@@ -1,4 +1,16 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy - Task Breezer Cookie Usage & Management',
+  description: 'Learn how Task Breezer uses cookies and local storage to enhance your experience. Understand essential, functional, and analytics cookies and how to manage them.',
+  keywords: 'cookie policy, cookies, local storage, browser storage, cookie management, privacy settings',
+  openGraph: {
+    title: 'Task Breezer Cookie Policy',
+    description: 'How we use cookies to improve your experience',
+    type: 'website',
+  },
+};
 
 export default function CookiesPage() {
   return (

@@ -74,6 +74,11 @@ export default function Footer() {
                   Cookie Policy
                 </Link>
               </li>
+              <li>
+                <Link href="/site-map" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Site Map
+                </Link>
+              </li>
             </ul>
           </div>
 

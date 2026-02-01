@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Task Breezer - Free Kanban Board Task Management',
+  title: 'About Task Breezer - Free Kanban Task Management Tool',
   description: 'Learn about Task Breezer, a modern intuitive Kanban board application designed to help you manage tasks with ease. Built with Next.js, TypeScript, and best practices.',
+  keywords: 'about task breezer, kanban app, task management software, productivity tool, free kanban board',
   openGraph: {
     title: 'About Task Breezer',
     description: 'Simple, fast, and accessible task management for everyone',

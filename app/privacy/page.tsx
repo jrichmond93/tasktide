@@ -1,3 +1,16 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - How Task Breezer Protects Your Data',
+  description: 'Task Breezer\'s Privacy Policy explains how we collect, use, and protect your data. Learn about local storage, cloud sync, data security, and your privacy rights.',
+  keywords: 'privacy policy, data protection, data security, privacy rights, GDPR compliance, data storage',
+  openGraph: {
+    title: 'Task Breezer Privacy Policy',
+    description: 'Learn how we protect your data and respect your privacy',
+    type: 'website',
+  },
+};
+
 export default function PrivacyPage() {
   return (
     <div className="min-h-[calc(100vh-16rem)] bg-gray-50 dark:bg-gray-900 py-12">
