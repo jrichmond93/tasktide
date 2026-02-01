@@ -1,16 +1,16 @@
-# Deployment Guide - TaskTide
+# Deployment Guide - TaskBreez
 
 ## 📦 Deploy to Vercel (Recommended)
 
 ### Quick Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/tasktide)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/taskbreez)
 
 ### Manual Deployment Steps
 
 1. **Push to GitHub**
    ```bash
-   git remote add origin https://github.com/yourusername/tasktide.git
+   git remote add origin https://github.com/yourusername/taskbreez.git
    git branch -M main
    git push -u origin main
    ```

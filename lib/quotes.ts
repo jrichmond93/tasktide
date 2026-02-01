@@ -1,8 +1,8 @@
-// Motivational quotes service - placeholder for future API integration
+// Motivational quotes service with real API integration
 import { MotivationalQuote } from './types';
 
-// Placeholder quotes (will be replaced with API fetch)
-const PLACEHOLDER_QUOTES: MotivationalQuote[] = [
+// Placeholder quotes (fallback when API fails)
+const FALLBACK_QUOTES: MotivationalQuote[] = [
   {
     text: 'The only way to do great work is to love what you do.',
     author: 'Steve Jobs',
@@ -25,30 +25,32 @@ const PLACEHOLDER_QUOTES: MotivationalQuote[] = [
   },
 ];
 
-// Get random quote from placeholder array
+// Fetch quote from Quotable API (free, no API key required)
 export const getMotivationalQuote = async (): Promise<MotivationalQuote> => {
-  // TODO: Replace with actual API call (e.g., quotable.io, zenquotes.io)
-  // Example future implementation:
-  // try {
-  //   const response = await fetch('https://api.quotable.io/random?tags=productivity,motivational');
-  //   const data = await response.json();
-  //   return { text: data.content, author: data.author };
-  // } catch (error) {
-  //   console.error('Error fetching quote:', error);
-  //   return getPlaceholderQuote();
-  // }
+  try {
+    const response = await fetch('https://api.quotable.io/random?tags=inspirational|motivational|productivity');
+    
+    if (!response.ok) {
+      throw new Error('API request failed');
+    }
 
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(getPlaceholderQuote());
-    }, 100);
-  });
+    const data = await response.json();
+    
+    return {
+      text: data.content,
+      author: data.author,
+    };
+  } catch (error) {
+    console.error('Error fetching quote from API:', error);
+    // Return random fallback quote on error
+    return getPlaceholderQuote();
+  }
 };
 
-// Get random quote from placeholder array (fallback)
+// Get random quote from fallback array
 const getPlaceholderQuote = (): MotivationalQuote => {
-  const randomIndex = Math.floor(Math.random() * PLACEHOLDER_QUOTES.length);
-  return PLACEHOLDER_QUOTES[randomIndex];
+  const randomIndex = Math.floor(Math.random() * FALLBACK_QUOTES.length);
+  return FALLBACK_QUOTES[randomIndex];
 };
 
 // Cache quote for session

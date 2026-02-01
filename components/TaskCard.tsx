@@ -7,6 +7,8 @@ import { CSS } from '@dnd-kit/utilities';
 interface TaskCardProps {
   task: Task;
   onDelete?: (taskId: string) => void;
+  onEdit?: (taskId: string) => void;
+  onArchive?: (taskId: string) => void;
   isDragging?: boolean;
 }
 
@@ -16,7 +18,7 @@ const priorityColors: Record<Priority, string> = {
   high: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
 };
 
-export default function TaskCard({ task, onDelete, isDragging }: TaskCardProps) {
+export default function TaskCard({ task, onDelete, onEdit, onArchive, isDragging }: TaskCardProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging: isSortableDragging } =
     useSortable({ id: task.id });
 
@@ -49,30 +51,70 @@ export default function TaskCard({ task, onDelete, isDragging }: TaskCardProps) 
     >
       <div className="flex items-start justify-between gap-2 mb-2">
         <h3 className="font-semibold text-gray-900 dark:text-white flex-1">{task.title}</h3>
-        {onDelete && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDelete(task.id);
-            }}
-            className="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-            aria-label="Delete task"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        <div className="flex items-center gap-1">
+          {onEdit && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit(task.id);
+              }}
+              className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              aria-label="Edit task"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        )}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                />
+              </svg>
+            </button>
+          )}
+          {onArchive && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onArchive(task.id);
+              }}
+              className="text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+              aria-label="Archive task"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                />
+              </svg>
+            </button>
+          )}
+          {onDelete && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(task.id);
+              }}
+              className="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+              aria-label="Delete task"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
 
       {task.description && (

@@ -15,6 +15,7 @@ import Column from '@/components/Column';
 import AddTaskForm from '@/components/AddTaskForm';
 import ThemeToggle from '@/components/ThemeToggle';
 import TaskCard from '@/components/TaskCard';
+import EditTaskForm from '@/components/EditTaskForm';
 
 export default function Home() {
   const [boardState, setBoardState] = useState<BoardState>(getInitialState());
@@ -22,6 +23,7 @@ export default function Home() {
   const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [quote, setQuote] = useState<string>('');
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [mounted, setMounted] = useState(false);
 
   // Load board state on mount
@@ -94,7 +96,7 @@ export default function Home() {
     }
   };
 
-  const handleAddTask = (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt' | 'order'>) => {
+  const handleAddTask = (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt' | 'order' | 'archived' | 'archivedAt'>) => {
     const newTaskId = `task-${Date.now()}`;
     const newTask: Task = {
       ...task,
@@ -102,6 +104,8 @@ export default function Home() {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       order: boardState.columns[task.columnId].taskIds.length,
+      archived: false,
+      archivedAt: null,
     };
 
     setBoardState({
@@ -141,18 +145,80 @@ export default function Home() {
     });
   };
 
+  const handleEditTask = (updatedTask: Task) => {
+    const oldTask = boardState.tasks[updatedTask.id];
+
+    // If column changed, update both columns
+    if (oldTask.columnId !== updatedTask.columnId) {
+      const oldColumn = boardState.columns[oldTask.columnId];
+      const newColumn = boardState.columns[updatedTask.columnId];
+
+      setBoardState({
+        ...boardState,
+        tasks: {
+          ...boardState.tasks,
+          [updatedTask.id]: updatedTask,
+        },
+        columns: {
+          ...boardState.columns,
+          [oldTask.columnId]: {
+            ...oldColumn,
+            taskIds: oldColumn.taskIds.filter((id) => id !== updatedTask.id),
+          },
+          [updatedTask.columnId]: {
+            ...newColumn,
+            taskIds: [...newColumn.taskIds, updatedTask.id],
+          },
+        },
+      });
+    } else {
+      setBoardState({
+        ...boardState,
+        tasks: {
+          ...boardState.tasks,
+          [updatedTask.id]: updatedTask,
+        },
+      });
+    }
+    setEditingTask(null);
+  };
+
+  const handleArchiveTask = (taskId: string) => {
+    const task = boardState.tasks[taskId];
+    const column = boardState.columns[task.columnId];
+
+    setBoardState({
+      ...boardState,
+      tasks: {
+        ...boardState.tasks,
+        [taskId]: {
+          ...task,
+          archived: true,
+          archivedAt: new Date().toISOString(),
+        },
+      },
+      columns: {
+        ...boardState.columns,
+        [task.columnId]: {
+          ...column,
+          taskIds: column.taskIds.filter((id) => id !== taskId),
+        },
+      },
+    });
+  };
+
   const handleExportJSON = () => {
     const json = exportToJSON(boardState);
     const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `tasktide-export-${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `taskbreez-export-${new Date().toISOString().split('T')[0]}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
 
-  // Filter tasks based on search term
+  // Filter tasks based on search term and exclude archived
   const filteredBoardState = {
     ...boardState,
     columns: Object.fromEntries(
@@ -163,8 +229,9 @@ export default function Home() {
           taskIds: column.taskIds.filter((taskId) => {
             const task = boardState.tasks[taskId];
             return (
-              task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              task.description.toLowerCase().includes(searchTerm.toLowerCase())
+              !task.archived &&
+              (task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+               task.description.toLowerCase().includes(searchTerm.toLowerCase()))
             );
           }),
         },
@@ -177,34 +244,18 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
-      {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm">
+    <div className="bg-gray-50 dark:bg-gray-900 transition-colors">
+      {/* Page Header with Quote and Actions */}
+      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                🌊 TaskTide
-              </h1>
-              {quote && (
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 italic">
-                  {quote}
-                </p>
-              )}
-            </div>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <button
-                onClick={handleExportJSON}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                Export JSON
-              </button>
-            </div>
-          </div>
+          {quote && (
+            <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
+              {quote}
+            </p>
+          )}
 
           {/* Search and Add Task */}
-          <div className="mt-4 flex gap-3">
+          <div className="flex gap-3">
             <input
               type="text"
               placeholder="Search tasks..."
@@ -213,6 +264,12 @@ export default function Home() {
               className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
+              onClick={handleExportJSON}
+              className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              Export JSON
+            </button>
+            <button
               onClick={() => setIsAddTaskOpen(true)}
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
@@ -220,10 +277,10 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Kanban Board */}
-      <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {boardState.columnOrder.map((columnId) => {
@@ -236,6 +293,8 @@ export default function Home() {
                   column={column}
                   tasks={tasks}
                   onDeleteTask={handleDeleteTask}
+                  onEditTask={(taskId) => setEditingTask(boardState.tasks[taskId])}
+                  onArchiveTask={handleArchiveTask}
                 />
               );
             })}
@@ -245,11 +304,20 @@ export default function Home() {
             {activeTask ? <TaskCard task={activeTask} isDragging /> : null}
           </DragOverlay>
         </DndContext>
-      </main>
+      </div>
 
       {/* Add Task Modal */}
       {isAddTaskOpen && (
         <AddTaskForm onSubmit={handleAddTask} onClose={() => setIsAddTaskOpen(false)} />
+      )}
+
+      {/* Edit Task Modal */}
+      {editingTask && (
+        <EditTaskForm
+          task={editingTask}
+          onSubmit={handleEditTask}
+          onClose={() => setEditingTask(null)}
+        />
       )}
     </div>
   );

@@ -13,6 +13,8 @@ export interface Task {
   order: number;
   createdAt: string;
   updatedAt: string;
+  archived: boolean;
+  archivedAt: string | null;
 }
 
 export interface Column {

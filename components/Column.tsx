@@ -9,9 +9,11 @@ interface ColumnProps {
   column: ColumnType;
   tasks: Task[];
   onDeleteTask: (taskId: string) => void;
+  onEditTask: (taskId: string) => void;
+  onArchiveTask: (taskId: string) => void;
 }
 
-export default function Column({ column, tasks, onDeleteTask }: ColumnProps) {
+export default function Column({ column, tasks, onDeleteTask, onEditTask, onArchiveTask }: ColumnProps) {
   const { setNodeRef, isOver } = useDroppable({
     id: column.id,
   });
@@ -33,7 +35,13 @@ export default function Column({ column, tasks, onDeleteTask }: ColumnProps) {
       <SortableContext items={tasks.map((t) => t.id)} strategy={verticalListSortingStrategy}>
         <div className="space-y-3">
           {tasks.map((task) => (
-            <TaskCard key={task.id} task={task} onDelete={onDeleteTask} />
+            <TaskCard 
+              key={task.id} 
+              task={task} 
+              onDelete={onDeleteTask} 
+              onEdit={onEditTask}
+              onArchive={onArchiveTask}
+            />
           ))}
           {tasks.length === 0 && (
             <div className="text-center py-8 text-gray-400 dark:text-gray-500">

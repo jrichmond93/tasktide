@@ -1,8 +1,8 @@
-# TaskTide 🌊
+# TaskBreez 🌊
 
 A simple, customizable Kanban board web app for personal task management. Built with Next.js, TypeScript, and Tailwind CSS.
 
-![TaskTide](https://img.shields.io/badge/Next.js-14-black)
+![TaskBreez](https://img.shields.io/badge/Next.js-14-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -29,8 +29,8 @@ A simple, customizable Kanban board web app for personal task management. Built 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/tasktide.git
-cd tasktide
+git clone https://github.com/yourusername/taskbreez.git
+cd taskbreez
 ```
 
 2. Install dependencies:
@@ -160,4 +160,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by the TaskTide Team
+Made with ❤️ by the TaskBreez Team

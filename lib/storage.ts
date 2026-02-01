@@ -1,7 +1,7 @@
 // LocalStorage helper functions with migration path to IndexedDB/Supabase
 import { BoardState, ColumnId } from './types';
 
-const STORAGE_KEY = 'tasktide-board-state';
+const STORAGE_KEY = 'taskbreez-board-state';
 const STORAGE_VERSION = '1.0';
 
 // Initial board state
