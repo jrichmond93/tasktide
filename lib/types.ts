@@ -23,7 +23,7 @@ export interface Column {
 
 export interface BoardState {
   tasks: { [key: string]: Task };
-  columns: { [key: ColumnId]: Column };
+  columns: Record<ColumnId, Column>;
   columnOrder: ColumnId[];
 }
 

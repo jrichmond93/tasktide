@@ -59,38 +59,38 @@ export default function Home() {
     const overId = over.id as string;
 
     // Check if dropped over a column
-    const targetColumn = boardState.columnOrder.find((colId) => colId === overId);
+    const targetColumn = boardState.columnOrder.find((colId) => colId === overId) as ColumnId | undefined;
 
     if (targetColumn) {
       const task = boardState.tasks[taskId];
-      if (task.columnId !== targetColumn) {
-        // Move task to new column
-        const sourceColumn = boardState.columns[task.columnId];
-        const destColumn = boardState.columns[targetColumn];
+      if (!task || task.columnId === targetColumn) return;
 
-        setBoardState({
-          ...boardState,
-          tasks: {
-            ...boardState.tasks,
-            [taskId]: {
-              ...task,
-              columnId: targetColumn,
-              updatedAt: new Date().toISOString(),
-            },
+      // Move task to new column
+      const sourceColumn = boardState.columns[task.columnId];
+      const destColumn = boardState.columns[targetColumn];
+
+      setBoardState({
+        ...boardState,
+        tasks: {
+          ...boardState.tasks,
+          [taskId]: {
+            ...task,
+            columnId: targetColumn,
+            updatedAt: new Date().toISOString(),
           },
-          columns: {
-            ...boardState.columns,
-            [task.columnId]: {
-              ...sourceColumn,
-              taskIds: sourceColumn.taskIds.filter((id) => id !== taskId),
-            },
-            [targetColumn]: {
-              ...destColumn,
-              taskIds: [...destColumn.taskIds, taskId],
-            },
+        },
+        columns: {
+          ...boardState.columns,
+          [task.columnId]: {
+            ...sourceColumn,
+            taskIds: sourceColumn.taskIds.filter((id) => id !== taskId),
           },
-        });
-      }
+          [targetColumn]: {
+            ...destColumn,
+            taskIds: [...destColumn.taskIds, taskId],
+          },
+        },
+      });
     }
   };
 
