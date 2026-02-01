@@ -10,14 +10,16 @@ A simple, customizable Kanban board web app for personal task management. Built 
 ## ✨ Features
 
 - 🎯 **Drag & Drop** - Intuitive task movement between columns using @dnd-kit/core
-- 📝 **Task Management** - Add, edit, delete, and search tasks with ease
+- ✏️ **Task Management** - Add, edit, delete, archive, and search tasks with ease
+- 🗂️ **Archive** - Archive completed tasks and restore them when needed
 - 🎨 **Dark Mode** - Beautiful dark/light theme toggle with system preference detection
-- 💾 **Persistent Storage** - Automatic save to localStorage (migration path to IndexedDB/Supabase ready)
+- 💾 **Persistent Storage** - Automatic save to localStorage (Supabase migration ready)
 - 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
-- 🔍 **Search & Filter** - Quickly find tasks across all columns
+- 🔍 **Search & Filter** - Quickly find tasks across all columns and archives
 - 📤 **Export** - Download your board as JSON for backup
-- 💬 **Motivational Quotes** - Daily inspiration (placeholder for API integration)
-- ⚡ **Fast & Static** - No backend required, deploy anywhere
+- 💬 **Motivational Quotes** - Daily inspiration from Quotable API
+- 🧭 **Navigation** - Global header and footer with About, Contact, Privacy pages
+- ⚡ **Fast & Static** - Optimized performance with Next.js App Router
 
 ## 🚀 Getting Started
 
@@ -59,20 +61,27 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-tasktide/
+taskbreez/
 ├── app/
 │   ├── page.tsx          # Main Kanban board
-│   ├── layout.tsx        # Root layout
+│   ├── archive/          # Archived tasks page
+│   ├── about/            # About page
+│   ├── contact/          # Contact page
+│   ├── privacy/          # Privacy policy
+│   ├── layout.tsx        # Root layout with Header/Footer
 │   └── globals.css       # Global styles
 ├── components/
 │   ├── TaskCard.tsx      # Task card component
 │   ├── Column.tsx        # Kanban column
 │   ├── AddTaskForm.tsx   # Task creation form
-│   └── ThemeToggle.tsx   # Dark mode toggle
+│   ├── EditTaskForm.tsx  # Task editing form
+│   ├── ThemeToggle.tsx   # Dark mode toggle
+│   ├── Header.tsx        # Global navigation header
+│   └── Footer.tsx        # Global footer
 ├── lib/
 │   ├── types.ts          # TypeScript interfaces
-│   ├── storage.ts        # Storage helpers (localStorage + migration)
-│   └── quotes.ts         # Motivational quotes service
+│   ├── storage.ts        # Storage helpers (localStorage + Supabase ready)
+│   └── quotes.ts         # Motivational quotes service (Quotable API)
 ├── tests/
 │   └── TaskCard.test.tsx # Component tests
 └── public/               # Static assets
@@ -110,15 +119,14 @@ npm run test:watch
 ### Static Export
 
 ```bash
-npm run build
-```
-
-The static site will be generated in the `out/` directory.
-
-## 🔮 Future Enhancements
-
+npm run Supabase Integration** - Cloud sync, authentication, and multi-user support
+- [ ] **Multiple Boards** - Create and manage multiple project boards
 - [ ] **IndexedDB Migration** - Automatic migration when localStorage limit reached
-- [ ] **Supabase Integration** - Cloud sync and backup
+- [ ] **PDF Export** - Export board as formatted PDF
+- [ ] **Due Date Notifications** - Browser notifications for overdue tasks
+- [ ] **Subtasks** - Break down tasks into smaller pieces
+- [ ] **Tags/Labels** - Categorize tasks with custom tags
+- [ ] **Collaboration** - Share boards with team memberc and backup
 - [ ] **Motivational Quotes API** - Real-time quotes from external API
 - [ ] **PDF Export** - Export board as formatted PDF
 - [ ] **Task Editing** - Edit existing tasks
