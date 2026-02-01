@@ -12,9 +12,9 @@ interface EditTaskFormProps {
 export default function EditTaskForm({ task, onSubmit, onClose }: EditTaskFormProps) {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
-  const [dueDate, setDueDate] = useState(task.dueDate || '');
+  const [dueDate, setDueDate] = useState(task.due_date || '');
   const [priority, setPriority] = useState<Priority>(task.priority);
-  const [columnId, setColumnId] = useState<ColumnId>(task.columnId);
+  const [columnId, setColumnId] = useState<ColumnId>(task.column_id);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,10 +28,10 @@ export default function EditTaskForm({ task, onSubmit, onClose }: EditTaskFormPr
       ...task,
       title: title.trim(),
       description: description.trim(),
-      dueDate: dueDate || null,
+      due_date: dueDate || null,
       priority,
-      columnId,
-      updatedAt: new Date().toISOString(),
+      column_id: columnId,
+      updated_at: new Date().toISOString(),
     });
   };
 
@@ -125,8 +125,7 @@ export default function EditTaskForm({ task, onSubmit, onClose }: EditTaskFormPr
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="todo">To Do</option>
-                <option value="inprogress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="inprogress">In Progress</option>              <option value="onhold">On Hold</option>                <option value="done">Done</option>
               </select>
             </div>
           </div>

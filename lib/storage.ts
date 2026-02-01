@@ -1,7 +1,7 @@
 // LocalStorage helper functions with migration path to IndexedDB/Supabase
 import { BoardState, ColumnId } from './types';
 
-const STORAGE_KEY = 'taskbreez-board-state';
+const STORAGE_KEY = 'taskbreezer-board-state';
 const STORAGE_VERSION = '1.0';
 
 // Initial board state
@@ -18,13 +18,18 @@ export const getInitialState = (): BoardState => ({
       title: 'In Progress',
       taskIds: [],
     },
+    onhold: {
+      id: 'onhold',
+      title: 'On Hold',
+      taskIds: [],
+    },
     done: {
       id: 'done',
       title: 'Done',
       taskIds: [],
     },
   },
-  columnOrder: ['todo', 'inprogress', 'done'],
+  columnOrder: ['todo', 'inprogress', 'onhold', 'done'],
 });
 
 // Load board state from localStorage

@@ -1,0 +1,12 @@
+# robots.txt for TaskBreezer.com
+
+User-agent: *
+Allow: /
+
+# Disallow private/auth pages
+Disallow: /login
+Disallow: /signup
+Disallow: /boards/
+
+# Sitemap location
+Sitemap: https://taskbreezer.com/sitemap.xml

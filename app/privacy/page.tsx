@@ -16,7 +16,7 @@ export default function PrivacyPage() {
                 Introduction
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
-                TaskBreez (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our Kanban board application.
+                Task Breezer (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our Kanban board application.
               </p>
             </section>
 
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
                 Data Storage
               </h2>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                TaskBreez stores your task data locally in your browser using localStorage or cloud storage via Supabase (when authenticated):
+                Task Breezer stores your task data locally in your browser using localStorage or cloud storage via Supabase (when authenticated):
               </p>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
                 <li><strong>Local Storage:</strong> Task data is stored in your browser and never sent to our servers when using the app without authentication</li>
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
                 Cookies and Tracking
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
-                TaskBreez uses minimal cookies and localStorage for:
+                Task Breezer uses minimal cookies and localStorage for:
               </p>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 mt-3">
                 <li>Maintaining your login session</li>
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
                 Children&apos;s Privacy
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
-                TaskBreez is not intended for children under 13. We do not knowingly collect personal information from children under 13.
+                Task Breezer is not intended for children under 13. We do not knowingly collect personal information from children under 13.
               </p>
             </section>
 

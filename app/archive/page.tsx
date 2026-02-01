@@ -3,80 +3,165 @@
 import { useState, useEffect } from 'react';
 import { Task, BoardState } from '@/lib/types';
 import { loadBoardState, saveBoardState } from '@/lib/storage';
+import { supabase } from '@/lib/supabase/client';
 import TaskCard from '@/components/TaskCard';
 
 export default function ArchivePage() {
   const [boardState, setBoardState] = useState<BoardState | null>(null);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [mounted, setMounted] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
-    const savedState = loadBoardState();
-    if (savedState) {
-      setBoardState(savedState);
-    }
+    checkAuthAndLoadTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleUnarchiveTask = (taskId: string) => {
-    if (!boardState) return;
+  const checkAuthAndLoadTasks = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    setIsAuthenticated(!!session);
 
-    const task = boardState.tasks[taskId];
-    const column = boardState.columns[task.columnId];
-
-    const updatedState = {
-      ...boardState,
-      tasks: {
-        ...boardState.tasks,
-        [taskId]: {
-          ...task,
-          archived: false,
-          archivedAt: null,
-        },
-      },
-      columns: {
-        ...boardState.columns,
-        [task.columnId]: {
-          ...column,
-          taskIds: [...column.taskIds, taskId],
-        },
-      },
-    };
-
-    setBoardState(updatedState);
-    saveBoardState(updatedState);
+    if (session) {
+      // Load from Supabase
+      await loadFromSupabase();
+    } else {
+      // Load from localStorage
+      const savedState = loadBoardState();
+      if (savedState) {
+        setBoardState(savedState);
+      }
+    }
+    setLoading(false);
   };
 
-  const handleDeleteTask = (taskId: string) => {
-    if (!boardState) return;
+  const loadFromSupabase = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('archived', true)
+        .order('archived_at', { ascending: false });
 
-    const { [taskId]: deleted, ...remainingTasks } = boardState.tasks;
-
-    const updatedState = {
-      ...boardState,
-      tasks: remainingTasks,
-    };
-
-    setBoardState(updatedState);
-    saveBoardState(updatedState);
+      if (error) throw error;
+      setTasks(data || []);
+    } catch (error) {
+      console.error('Error loading archived tasks:', error);
+    }
   };
 
-  if (!mounted || !boardState) {
-    return null;
+  const handleUnarchiveTask = async (taskId: string) => {
+    if (isAuthenticated) {
+      // Update in Supabase
+      try {
+        const { error } = await supabase
+          .from('tasks')
+          .update({
+            archived: false,
+            archived_at: null,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', taskId);
+
+        if (error) throw error;
+        setTasks(tasks.filter(t => t.id !== taskId));
+      } catch (error) {
+        console.error('Error unarchiving task:', error);
+      }
+    } else {
+      // Update localStorage
+      if (!boardState) return;
+
+      const task = boardState.tasks[taskId];
+      const column = boardState.columns[task.column_id];
+
+      const updatedState = {
+        ...boardState,
+        tasks: {
+          ...boardState.tasks,
+          [taskId]: {
+            ...task,
+            archived: false,
+            archived_at: null,
+          },
+        },
+        columns: {
+          ...boardState.columns,
+          [task.column_id]: {
+            ...column,
+            taskIds: [...column.taskIds, taskId],
+          },
+        },
+      };
+
+      setBoardState(updatedState);
+      saveBoardState(updatedState);
+    }
+  };
+
+  const handleDeleteTask = async (taskId: string) => {
+    if (!confirm('Are you sure you want to permanently delete this task?')) {
+      return;
+    }
+
+    if (isAuthenticated) {
+      // Delete from Supabase
+      try {
+        const { error } = await supabase
+          .from('tasks')
+          .delete()
+          .eq('id', taskId);
+
+        if (error) throw error;
+        setTasks(tasks.filter(t => t.id !== taskId));
+      } catch (error) {
+        console.error('Error deleting task:', error);
+      }
+    } else {
+      // Delete from localStorage
+      if (!boardState) return;
+
+      const { [taskId]: deleted, ...remainingTasks } = boardState.tasks;
+
+      const updatedState = {
+        ...boardState,
+        tasks: remainingTasks,
+      };
+
+      setBoardState(updatedState);
+      saveBoardState(updatedState);
+    }
+  };
+
+  if (!mounted || loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[calc(100vh-200px)]">
+        <div className="text-gray-600 dark:text-gray-400">Loading archived tasks...</div>
+      </div>
+    );
   }
 
-  // Get all archived tasks
-  const archivedTasks = Object.values(boardState.tasks)
-    .filter((task) => task.archived)
-    .filter((task) => 
-      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      task.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => {
-      const dateA = new Date(a.archivedAt || 0).getTime();
-      const dateB = new Date(b.archivedAt || 0).getTime();
-      return dateB - dateA; // Most recently archived first
-    });
+  // Get archived tasks based on auth state
+  const archivedTasks = isAuthenticated
+    ? tasks.filter((task) => 
+        task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        task.description.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : boardState
+    ? Object.values(boardState.tasks)
+        .filter((task) => task.archived)
+        .filter((task) => 
+          task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          task.description.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .sort((a, b) => {
+          const dateA = new Date(a.archived_at || 0).getTime();
+          const dateB = new Date(b.archived_at || 0).getTime();
+          return dateB - dateA;
+        })
+    : [];
 
   return (
     <div className="min-h-[calc(100vh-16rem)] bg-gray-50 dark:bg-gray-900">
@@ -166,9 +251,9 @@ export default function ArchivePage() {
                     </svg>
                   </button>
                 </div>
-                {task.archivedAt && (
+                {task.archived_at && (
                   <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    Archived {new Date(task.archivedAt).toLocaleDateString()}
+                    Archived {new Date(task.archived_at).toLocaleDateString()}
                   </div>
                 )}
               </div>

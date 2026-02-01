@@ -1,6 +1,6 @@
 # TaskBreez 🌊
 
-A simple, customizable Kanban board web app for personal task management. Built with Next.js, TypeScript, and Tailwind CSS.
+A modern, feature-rich Kanban board application built with Next.js 14, TypeScript, and Tailwind CSS. TaskBreez supports both offline (localStorage) and online (Supabase) modes with seamless data synchronization.
 
 ![TaskBreez](https://img.shields.io/badge/Next.js-14-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)
@@ -9,25 +9,33 @@ A simple, customizable Kanban board web app for personal task management. Built 
 
 ## ✨ Features
 
+### Core Features
 - 🎯 **Drag & Drop** - Intuitive task movement between columns using @dnd-kit/core
-- ✏️ **Task Management** - Add, edit, delete, archive, and search tasks with ease
-- 🗂️ **Archive** - Archive completed tasks and restore them when needed
+- ✏️ **Task Management** - Create, edit, delete, and archive tasks with full CRUD operations
+- 🗂️ **Archive System** - Dedicated archive page to view, restore, or permanently delete archived tasks
 - 🎨 **Dark Mode** - Beautiful dark/light theme toggle with system preference detection
-- 💾 **Persistent Storage** - Automatic save to localStorage (Supabase migration ready)
-- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- 💾 **Offline First** - Works without internet using browser localStorage
+- 📱 **Responsive Design** - Seamless experience on desktop, tablet, and mobile
 - 🔍 **Search & Filter** - Quickly find tasks across all columns and archives
 - 📤 **Export** - Download your board as JSON for backup
-- 💬 **Motivational Quotes** - Daily inspiration from Quotable API
-- 🧭 **Navigation** - Global header and footer with About, Contact, Privacy pages
-- ⚡ **Fast & Static** - Optimized performance with Next.js App Router
+- 💬 **Motivational Quotes** - Daily inspiration from Quotable.io API
+
+### Cloud Features (with Supabase)
+- 👤 **User Authentication** - Secure sign up, sign in, and session management
+- 📊 **Multi-Board Support** - Create and manage multiple boards per user
+- ☁️ **Cloud Sync** - Access your tasks from any device
+- 🔄 **Auto-Import** - Automatically import localStorage data on first login
+- 🔒 **Row-Level Security** - Secure data access with Supabase RLS policies
+- 🌐 **Team Ready** - Infrastructure for future board sharing features
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js 18+ and npm/yarn/pnpm
+- (Optional) Supabase account for cloud features
 
-### Installation
+### Quick Start (Offline Mode)
 
 1. Clone the repository:
 ```bash
@@ -45,14 +53,56 @@ npm install
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. Open [http://localhost:3000](http://localhost:3000) - start using TaskBreez immediately!
+
+All your data is stored locally in your browser. No account needed!
+
+### Supabase Setup (Optional - for Cloud Features)
+
+To enable authentication, multi-board support, and cloud sync:
+
+1. **Create a Supabase Project:**
+   - Visit [supabase.com](https://supabase.com)
+   - Click "New Project"
+   - Note your project URL and anon key from Settings > API
+
+2. **Set Up the Database:**
+   - Open SQL Editor in your Supabase dashboard
+   - Copy the SQL script from `SUPABASE_SCHEMA.md`
+   - Execute the script to create tables, policies, and triggers
+
+3. **Configure Environment Variables:**
+   ```bash
+   cp .env.local.example .env.local
+   ```
+   
+   Edit `.env.local` and add:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. **Restart the Server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Sign Up and Import:**
+   - Click "Sign In" in the header
+   - Create a new account
+   - Your localStorage data will be automatically imported!
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 14 with App Router
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Drag & Drop:** @dnd-kit/core (modern, accessible, performant)
+- **Language:** TypeScript 5.4 (strict mode)
+- **Styling:** Tailwind CSS 3.4
+- **Drag & Drop:** @dnd-kit/core 6.1.0
+- **Authentication:** Supabase Auth (@supabase/ssr)
+- **Database:** PostgreSQL via Supabase
+- **API Integration:** Quotable.io for motivational quotes
+- **State Management:** React useState/useEffect
+- **Storage:** Browser localStorage + Supabase (hybrid mode)
 - **Storage:** Browser localStorage (with IndexedDB migration path)
 - **Testing:** Jest + React Testing Library
 - **Linting:** ESLint + Prettier

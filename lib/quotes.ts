@@ -25,10 +25,10 @@ const FALLBACK_QUOTES: MotivationalQuote[] = [
   },
 ];
 
-// Fetch quote from Quotable API (free, no API key required)
+// Fetch quote from our Next.js API route (which proxies ZenQuotes)
 export const getMotivationalQuote = async (): Promise<MotivationalQuote> => {
   try {
-    const response = await fetch('https://api.quotable.io/random?tags=inspirational|motivational|productivity');
+    const response = await fetch('/api/quote');
     
     if (!response.ok) {
       throw new Error('API request failed');
@@ -37,12 +37,12 @@ export const getMotivationalQuote = async (): Promise<MotivationalQuote> => {
     const data = await response.json();
     
     return {
-      text: data.content,
+      text: data.text,
       author: data.author,
     };
   } catch (error) {
-    console.error('Error fetching quote from API:', error);
-    // Return random fallback quote on error
+    // Silently fall back to placeholder quotes when API is unavailable
+    // (This is expected behavior, not an error)
     return getPlaceholderQuote();
   }
 };

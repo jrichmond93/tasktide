@@ -7,12 +7,14 @@ describe('TaskCard', () => {
     id: 'task-1',
     title: 'Test Task',
     description: 'This is a test task',
-    dueDate: '2026-02-15',
+    due_date: '2026-02-15',
     priority: 'high',
-    columnId: 'todo',
+    column_id: 'todo',
     order: 0,
-    createdAt: '2026-02-01T00:00:00.000Z',
-    updatedAt: '2026-02-01T00:00:00.000Z',
+    created_at: '2026-02-01T00:00:00.000Z',
+    updated_at: '2026-02-01T00:00:00.000Z',
+    archived: false,
+    archived_at: null,
   };
 
   it('renders task title correctly', () => {

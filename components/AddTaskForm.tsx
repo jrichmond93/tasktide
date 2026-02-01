@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Task, Priority, ColumnId } from '@/lib/types';
 
 interface AddTaskFormProps {
-  onSubmit: (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt' | 'order' | 'archived' | 'archivedAt'>) => void;
+  onSubmit: (task: Omit<Task, 'id' | 'created_at' | 'updated_at' | 'order' | 'archived' | 'archived_at'>) => void;
   onClose: () => void;
 }
 
@@ -26,9 +26,9 @@ export default function AddTaskForm({ onSubmit, onClose }: AddTaskFormProps) {
     onSubmit({
       title: title.trim(),
       description: description.trim(),
-      dueDate: dueDate || null,
+      due_date: dueDate || null,
       priority,
-      columnId,
+      column_id: columnId,
     });
 
     // Reset form
@@ -129,8 +129,7 @@ export default function AddTaskForm({ onSubmit, onClose }: AddTaskFormProps) {
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="todo">To Do</option>
-                <option value="inprogress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="inprogress">In Progress</option>              <option value="onhold">On Hold</option>                <option value="done">Done</option>
               </select>
             </div>
           </div>

@@ -1,20 +1,20 @@
-// TypeScript interfaces for TaskTide
+// TypeScript interfaces for Task Breezer
 
 export type Priority = 'low' | 'medium' | 'high';
-export type ColumnId = 'todo' | 'inprogress' | 'done';
+export type ColumnId = 'todo' | 'inprogress' | 'onhold' | 'done';
 
 export interface Task {
   id: string;
   title: string;
   description: string;
-  dueDate: string | null;
+  due_date: string | null;
   priority: Priority;
-  columnId: ColumnId;
+  column_id: ColumnId;
   order: number;
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
   archived: boolean;
-  archivedAt: string | null;
+  archived_at: string | null;
 }
 
 export interface Column {
@@ -40,4 +40,33 @@ export interface StorageAdapter {
 export interface MotivationalQuote {
   text: string;
   author: string;
+}
+
+// Supabase database types
+export interface Board {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string | null;
+  color: string;
+  is_default: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Profile {
+  id: string;
+  email: string;
+  full_name: string | null;
+  avatar_url: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BoardMember {
+  id: string;
+  board_id: string;
+  user_id: string;
+  role: 'owner' | 'editor' | 'viewer';
+  created_at: string;
 }

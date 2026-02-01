@@ -44,13 +44,17 @@ export default function TaskCard({ task, onDelete, onEdit, onArchive, isDragging
       ref={setNodeRef}
       style={style}
       {...attributes}
-      {...listeners}
-      className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 cursor-grab active:cursor-grabbing hover:shadow-md transition-shadow ${
+      className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md transition-shadow ${
         isDragging ? 'shadow-xl rotate-3' : ''
       }`}
     >
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-semibold text-gray-900 dark:text-white flex-1">{task.title}</h3>
+        <h3 
+          {...listeners}
+          className="font-semibold text-gray-900 dark:text-white flex-1 cursor-grab active:cursor-grabbing"
+        >
+          {task.title}
+        </h3>
         <div className="flex items-center gap-1">
           {onEdit && (
             <button
@@ -118,27 +122,35 @@ export default function TaskCard({ task, onDelete, onEdit, onArchive, isDragging
       </div>
 
       {task.description && (
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{task.description}</p>
+        <p 
+          {...listeners}
+          className="text-sm text-gray-600 dark:text-gray-300 mb-3 cursor-grab active:cursor-grabbing"
+        >
+          {task.description}
+        </p>
       )}
 
-      <div className="flex items-center justify-between gap-2">
+      <div 
+        {...listeners}
+        className="flex items-center justify-between gap-2 cursor-grab active:cursor-grabbing"
+      >
         <span
           className={`text-xs px-2 py-1 rounded-full font-medium ${priorityColors[task.priority]}`}
         >
           {task.priority}
         </span>
 
-        {task.dueDate && (
-          <span
-            className={`text-xs ${
-              isOverdue(task.dueDate)
+        {task.due_date && (
+          <div
+            className={`text-sm ${
+              isOverdue(task.due_date)
                 ? 'text-red-600 dark:text-red-400 font-semibold'
-                : 'text-gray-500 dark:text-gray-400'
+                : 'text-gray-600 dark:text-gray-400'
             }`}
           >
-            {isOverdue(task.dueDate) && '⚠️ '}
-            {formatDate(task.dueDate)}
-          </span>
+            {isOverdue(task.due_date) && '⚠️ '}
+            {formatDate(task.due_date)}
+          </div>
         )}
       </div>
     </div>
