@@ -162,7 +162,7 @@ export default function EmptyBoardState({ onAddTask, isAuthenticated = false }: 
 
           {/* Learning Links */}
           <div className="mt-6 text-center space-y-3">
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               <a
                 href="/kanban"
                 className="inline-flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
@@ -181,6 +181,16 @@ export default function EmptyBoardState({ onAddTask, isAuthenticated = false }: 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 Boost Your Productivity
+              </a>
+              <span className="text-gray-400 dark:text-gray-500">•</span>
+              <a
+                href="/systems-over-goals"
+                className="inline-flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Systems Over Goals
               </a>
             </div>
           </div>

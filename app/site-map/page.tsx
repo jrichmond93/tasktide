@@ -79,6 +79,13 @@ export default function SiteMapPage() {
                 </h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300">Boost efficiency with proven techniques</p>
               </Link>
+              <Link href="/systems-over-goals" className="p-3 rounded-lg border-2 border-purple-500 dark:border-purple-400 bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
+                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                  Systems Over Goals
+                  <span className="text-xs bg-purple-600 text-white px-2 py-0.5 rounded-full">New</span>
+                </h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300">Build sustainable success with daily systems</p>
+              </Link>
               <Link href="/resources" className="p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors">
                 <h3 className="font-semibold text-gray-900 dark:text-white">Resources</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Curated productivity tools and guides</p>

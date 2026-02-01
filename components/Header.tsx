@@ -44,6 +44,7 @@ export default function Header() {
         { name: 'Archive', href: '/archive' },
         { name: 'Kanban Guide', href: '/kanban' },
         { name: 'Productivity', href: '/productivity-tips' },
+        { name: 'Systems', href: '/systems-over-goals' },
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
       ]
@@ -52,6 +53,7 @@ export default function Header() {
         { name: 'Archive', href: '/archive' },
         { name: 'Kanban Guide', href: '/kanban' },
         { name: 'Productivity', href: '/productivity-tips' },
+        { name: 'Systems', href: '/systems-over-goals' },
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
       ];

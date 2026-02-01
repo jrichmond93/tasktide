@@ -261,17 +261,28 @@ export default function KanbanPage() {
               📚 Want to Learn More?
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              Master productivity beyond Kanban with our comprehensive guide covering daily habits, time management techniques, and focus strategies.
+              Master productivity beyond Kanban with our comprehensive guides covering daily habits, time management techniques, and systems thinking.
             </p>
-            <Link
-              href="/productivity-tips"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold rounded-lg transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Explore Productivity Tips
-            </Link>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/productivity-tips"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold rounded-lg transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Explore Productivity Tips
+              </Link>
+              <Link
+                href="/systems-over-goals"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 text-indigo-600 dark:text-indigo-400 font-semibold rounded-lg border-2 border-indigo-600 dark:border-indigo-500 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Learn Systems Over Goals
+              </Link>
+            </div>
           </section>
 
           {/* Quick Tips */}

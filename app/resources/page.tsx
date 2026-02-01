@@ -65,6 +65,15 @@ export default function ResourcesPage() {
                   </svg>
                   Productivity Tips & Techniques
                 </Link>
+                <Link
+                  href="/systems-over-goals"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-purple-500 dark:border-purple-400 text-purple-600 dark:text-purple-400 rounded-lg hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors font-medium text-sm"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Systems Over Goals Guide
+                </Link>
               </div>
             </div>
 

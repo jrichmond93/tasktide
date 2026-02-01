@@ -315,6 +315,12 @@ export default function ProductivityTipsPage() {
                 >
                   Learn Kanban Best Practices
                 </Link>
+                <Link
+                  href="/systems-over-goals"
+                  className="px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors border-2 border-white"
+                >
+                  Discover Systems Over Goals
+                </Link>
               </div>
             </div>
           </section>
