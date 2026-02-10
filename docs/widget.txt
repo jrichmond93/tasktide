@@ -1,0 +1,31 @@
+<script src="https://central.aisuretech.com/widget.js"></script>
+<div id="recommendation-widget" data-rec-widget
+  data-site-id="11"
+  data-categories="Lifestyle"
+  data-layout="carousel"
+  data-theme="light"
+  data-limit="5"
+  data-auto-rotate="true"></div>
+
+<script>
+new RecommendationWidget('recommendation-widget', {
+  siteId: '11',
+  categories: 'Lifestyle',
+  layout: 'carousel',
+  theme: 'light',
+  limit: 5,
+  showImages: true,
+  showDescription: true,
+  showTags: true,
+  showTitle: true,
+  title: 'You Might Like',
+  imageSize: '80px',
+  imageShape: 'square',
+  autoRotate: true,
+  openInNewTab: true,
+  animation: 'fade',
+  hoverEffect: 'scale',
+  columns: 2,
+  descriptionLength: 120
+});
+</script>

@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import Script from 'next/script';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,11 +19,45 @@ export default function Footer() {
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Simple, customizable Kanban board for personal task management.
             </p>
+            
+            {/* Recommendation Widget */}
+            <div className="mt-0 mb-0">
+              <div id="recommendation-widget"></div>
+            </div>
+            
+            <Script 
+              src="https://central.aisuretech.com/widget.js" 
+              strategy="afterInteractive"
+              onLoad={() => {
+                if (typeof window !== 'undefined' && (window as any).RecommendationWidget) {
+                  new (window as any).RecommendationWidget('recommendation-widget', {
+                    siteId: '11',
+                    categories: 'Lifestyle',
+                    layout: 'carousel',
+                    theme: 'light',
+                    limit: 5,
+                    showImages: false,
+                    showDescription: true,
+                    showTags: false,
+                    showTitle: false,
+                    title: 'You Might Like',
+                    imageSize: '80px',
+                    imageShape: 'square',
+                    autoRotate: true,
+                    openInNewTab: true,
+                    animation: 'fade',
+                    hoverEffect: 'scale',
+                    columns: 2,
+                    descriptionLength: 70
+                  });
+                }
+              }}
+            />
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Quick Links</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mt-0 mb-3">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
