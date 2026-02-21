@@ -517,6 +517,21 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-700 dark:text-gray-300 text-lg">
+            <a
+              href="https://www.ideatomarketai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+            >
+              Evaluate your business idea
+            </a>
+          </p>
+        </div>
+      </div>
+
       {/* Add Task Modal */}
       {isAddTaskOpen && (
         <AddTaskForm onSubmit={handleAddTask} onClose={() => setIsAddTaskOpen(false)} />

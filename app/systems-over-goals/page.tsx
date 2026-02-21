@@ -419,23 +419,25 @@ export default function SystemsOverGoalsPage() {
         {/* Conclusion and CTA */}
         <section className="bg-gradient-to-br from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-800 rounded-lg shadow-lg p-8 text-white mb-8">
           <h2 className="text-3xl font-bold mb-4">
-            Start Building Your Systems Today
+            Turn Your Goals Into Systems
           </h2>
           <p className="text-lg mb-6 text-blue-50">
-            By prioritizing systems over goals, as championed by Scott Adams, you set yourself up for enduring success, adaptability, and fulfillment. This isn&apos;t about abandoning ambition but reframing it for real-world wins.
+            Ready for practical support? Goals To Systems helps you transform ambitious goals into repeatable systems you can follow consistently, so progress compounds over time.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/"
+            <a
+              href="https://goalstosystems.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-colors"
             >
-              Start Using Task Breezer
-            </Link>
+              Visit Goals To Systems
+            </a>
             <Link
-              href="/kanban"
+              href="/resources"
               className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors border border-blue-400"
             >
-              Learn Kanban Methodology
+              Explore More Resources
             </Link>
           </div>
         </section>

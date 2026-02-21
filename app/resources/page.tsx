@@ -585,6 +585,17 @@ export default function ResourcesPage() {
                     Discover the evolutionary history of animals, explore fascinating facts, and learn about the diversity of life on Earth.
                   </p>
                 </a>
+                <a
+                  href="https://dailyearthview.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Daily Earth View</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Discover breathtaking daily Earth views from space, captured by NASA&apos;s EPIC camera on the DSCOVR spacecraft. Dive into interactive images showcasing our planet&apos;s dynamic weather patterns, cloud formations, rotating landscapes, and natural phenomena in high-resolution detail. Ideal for space enthusiasts, educators, and anyone captivated by the iconic &quot;blue marble&quot; Earth—explore the ultimate Earth from space archive at DailyEarthView.com
+                  </p>
+                </a>
               </div>
             </div>
 
@@ -692,6 +703,28 @@ export default function ResourcesPage() {
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Headline Lingo</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Master Spanish, French, German, and more by reading today&apos;s top news stories with AI-powered translations.
+                  </p>
+                </a>
+                <a
+                  href="https://dailycalmai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Daily Calm AI</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Daily Calm AI helps you calm down fast, build a simple self care routine, and generate personalized affirmations—without clutter. Explore practical self care ideas, stress relief techniques (including breathing exercises and grounding scripts), and daily affirmations you can repeat in minutes.
+                  </p>
+                </a>
+                <a
+                  href="https://goalstosystems.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Goals To Systems</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    AI-powered tool for transforming ambitious goals into sustainable systems. Turns your objective into repeatable processes that build momentum over time. Where personal development becomes accessible, fun, and effective—no lectures, just practical support.
                   </p>
                 </a>
               </div>
