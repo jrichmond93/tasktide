@@ -729,6 +729,114 @@ export default function ResourcesPage() {
                 </a>
               </div>
             </div>
+
+            {/* Games, Relationships & Experiments */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-4 flex items-center gap-2">
+                <span>🎲</span>
+                Games, Relationships & Experiments
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a
+                  href="https://diceodysseys.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Dice Odysseys</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    An immersive web-based dice game that blends ancient Odyssey myths with sci-fi strategy, where players race across a shrinking galaxy to claim cosmic MacGuffins.
+                  </p>
+                </a>
+                <a
+                  href="https://www.dogweave.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Dog Weave</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    An interactive dog genetics simulator for combining breeds, predicting trait blends, and exploring multi-generation outcomes.
+                  </p>
+                </a>
+                <a
+                  href="https://www.idealmatchai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Ideal Match AI</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    An AI-powered platform that helps users generate a romantic match from a personalized profile and chat with that match in real time.
+                  </p>
+                </a>
+                <a
+                  href="https://tds.policyclown.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Trump Derangement Syndrome</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    A satirical, AI-powered daily publication from PolicyClown.com focused on mock-scientific political comedy.
+                  </p>
+                </a>
+              </div>
+            </div>
+
+            {/* Civic, History & Public Records */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-4 flex items-center gap-2">
+                <span>🏛️</span>
+                Civic, History & Public Records
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a
+                  href="https://human.aievolutionexplorer.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Human Evolution Explorer</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    A clear reference tracing 160 million years of primate and human evolution across major fossil stages, with species profiles and scientific sources.
+                  </p>
+                </a>
+                <a
+                  href="https://assassination.aisuretech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Presidential Assassination Attempts Explorer</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    A searchable archive of attempts, plots, and incidents targeting U.S. presidents with filters, timelines, maps, and charts.
+                  </p>
+                </a>
+                <a
+                  href="https://freespeechatlas.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Free Speech Atlas</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    An educational hub covering the history, law, and debates around free speech, censorship, campus issues, and AI-era expression.
+                  </p>
+                </a>
+                <a
+                  href="https://ufofileswatch.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors"
+                >
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">UFO Files Watch</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    A public records tracker for government UFO and UAP disclosures with source links, status metadata, and grounded AI chat support.
+                  </p>
+                </a>
+              </div>
+            </div>
           </section>
         </div>
 

@@ -1,0 +1,49 @@
+{
+  "title": "Task Breezer",
+  "url-slug": "taskbreezer",
+  "tagline": "Organize work faster with an offline-first Kanban board that syncs to the cloud when you need it.",
+  "short-description": "Task Breezer is a modern Kanban board app for planning, tracking, and completing tasks across multiple boards. It works instantly in the browser with local storage and adds Supabase-powered auth and sync for cross-device use.",
+  "description": "Task Breezer is a productivity web app designed for individuals and small teams who want simple, visual task management without setup friction. Users can create, edit, drag, archive, and search tasks in a responsive Kanban interface, export board data as JSON, and stay motivated with session-based quotes. The platform starts in offline mode with browser storage, then seamlessly supports authenticated multi-board workflows and cloud persistence through Supabase, making it ideal for users who need reliability both online and offline.",
+  "industry": "Productivity SaaS",
+  "live-url": "https://taskbreezer.com",
+  "image-alt-text": "Screenshot of the home page for the Task Breezer website",
+  "tags": [
+    "Kanban Task Management",
+    "Productivity",
+    "Offline-First",
+    "Multi-Board Planning",
+    "Small Teams"
+  ],
+  "tech-stack": [
+    "Next.js 14",
+    "TypeScript",
+    "React 18",
+    "Tailwind CSS",
+    "Supabase",
+    "PostgreSQL",
+    "@dnd-kit"
+  ],
+  "features": [
+    "Drag-and-drop Kanban task workflow",
+    "Task CRUD with priority and due dates",
+    "Archive, restore, and permanent delete flow",
+    "Real-time task search and filtering",
+    "Offline localStorage mode with instant startup",
+    "Optional authentication and cloud sync via Supabase",
+    "Multi-board management for separate projects",
+    "JSON export for backup and portability",
+    "Responsive design with dark and light themes"
+  ],
+  "case-study": {
+    "problem": "Many task tools are either too complex for quick personal planning or require account setup before users can capture work. This creates friction for first-time users and weak reliability when internet access is unstable.",
+    "solution": "Task Breezer delivers an offline-first Kanban experience that works immediately in the browser, then layers in optional Supabase authentication and cloud sync for users who want multi-device continuity and multiple boards.",
+    "process": "The product was built with Next.js App Router and TypeScript, using @dnd-kit for intuitive drag-and-drop interactions and Tailwind CSS for a responsive UI. Storage utilities support local persistence by default, while a Supabase integration adds secure sign-up, login, row-level protected data access, and migration of local tasks into cloud-backed boards after authentication.",
+    "outcome": "Users can start managing tasks in seconds with no account required, reducing onboarding drop-off and improving day-one activation. As needs grow, they can adopt authenticated cloud workflows without losing existing data, resulting in better retention and cross-device consistency.",
+    "client-quote": "Task Breezer gave us the simplicity we wanted on day one and the scalability we needed later. We started offline in minutes, then moved to synced boards without any disruption.",
+    "design-decisions": "The core architecture prioritized progressive enhancement: local-first storage for resilience and speed, optional cloud features for expansion, and a modular component structure to keep Kanban interactions, task forms, and board management maintainable. Route protection and Supabase RLS were chosen to enforce data isolation, while JSON export preserved user control over backups."
+  },
+  "seo-social-sharing": {
+    "seo-title": "Task Breezer | Offline-First Kanban Task Manager",
+    "meta-description": "Plan, track, and complete tasks with Task Breezer, an offline-first Kanban app with drag-and-drop boards and optional Supabase cloud sync."
+  }
+}
