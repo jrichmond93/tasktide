@@ -12,9 +12,6 @@ export const metadata: Metadata = {
   creator: 'AI Sure Tech',
   publisher: 'AI Sure Tech',
   metadataBase: new URL('https://taskbreezer.com'),
-  alternates: {
-    canonical: '/',
-  },
   icons: {
     icon: '/images/favicon.png',
     apple: '/images/favicon.png',
