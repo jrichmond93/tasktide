@@ -2,11 +2,12 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://taskbreezer.com';
+  const currentContentModified = new Date('2026-09-14T00:00:00.000Z');
   
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: currentContentModified,
       changeFrequency: 'weekly',
       priority: 1,
     },
@@ -24,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/productivity-tips`,
-      lastModified: new Date(),
+      lastModified: currentContentModified,
       changeFrequency: 'monthly',
       priority: 0.9,
     },

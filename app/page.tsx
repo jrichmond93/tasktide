@@ -528,6 +528,17 @@ export default function Home() {
             >
               Evaluate your business idea
             </a>
+            <span className="inline-block mx-3 text-gray-400" aria-hidden="true">
+              •
+            </span>
+            <a
+              href="https://jobshiftatlas.com/career-explorer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+            >
+              Explore possible career directions
+            </a>
           </p>
         </div>
       </div>

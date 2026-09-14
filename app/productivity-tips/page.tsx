@@ -80,7 +80,16 @@ export default function ProductivityTipsPage() {
                   4. Automate the Mundane
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Leverage AI and apps to handle repetitive tasks, freeing mental energy for strategic work.
+                  Leverage AI and apps to handle repetitive tasks, freeing mental energy for strategic work. Learn{' '}
+                  <a
+                    href="https://jobshiftatlas.com/ai-and-work/tasks-and-workflows"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                  >
+                    how AI changes tasks and workflows
+                  </a>{' '}
+                  before deciding what to automate.
                 </p>
               </div>
 
