@@ -138,6 +138,18 @@ export default function KanbanPage() {
                   Clearly define rules (e.g., definition of &quot;Done&quot;) so everyone understands expectations, 
                   reducing confusion.
                 </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
+                  If you use Kanban for freelance client work, the board tracks the work but does not replace a clear project agreement.{' '}
+                  <a
+                    href="https://assistedfreelance.com/guides/working-directly-with-clients"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                  >
+                    AssistedFreelance
+                  </a>{' '}
+                  explains how to organize scope, responsibilities, changes, approvals, invoicing, and final delivery when working directly with clients.
+                </p>
               </div>
 
               <div className="bg-green-50 dark:bg-gray-700 p-6 rounded-lg">
